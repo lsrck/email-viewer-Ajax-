@@ -21,6 +21,7 @@ class EmailsController < ApplicationController
 
   def destroy
     @email.destroy
+    redirect_to root_path
   end
 
 
