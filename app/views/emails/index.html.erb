@@ -1,19 +1,22 @@
-<h1>Mes emails</h1>
-
-<table>
-	<tr>
-		<th>Email object</th>
-    <th>Email body</th>
-  </tr>
-
-  <tr>
-	  <%@emails.each do |email|%>
-	  	<td>
-				<%= link_to email.object, email_path(email), remote: true %> 
-				<% end %>
-			</td>
-			<td>
-				<div id="emailbody" style="display:none;"></div>
-			</td>
- 	</tr>
-</table>
+<div class="container">
+	<h1>Mes emails</h1>
+	<div class="table">
+		<table>
+			<tr>
+				<th>Email object</th>
+		  </tr>
+		  <%@emails.each do |email|%>
+		  <tr>
+		  	<td>
+				<%= link_to email.object.capitalize, email_path(email), remote: true %>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+	<div id="emailbody" style="display:none;">
+		<%= link_to @email, remote: true, method: :delete,  data: { confirm: 'Are you sure?' } do %>
+		<button>Delete!</button>
+		<% end %>
+	</div>
+</div>
